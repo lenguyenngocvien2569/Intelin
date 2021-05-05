@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export default (url: string) => {
   const connect = async () => {
-    return await mongoose.connect(url, {
+    return mongoose.connect(url, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true })
@@ -17,3 +17,8 @@ export default (url: string) => {
   mongoose.connection.on('disconnected', connect);
 }
 
+// try {
+//   const response = await comn
+// } catch (e) {
+  
+// }
