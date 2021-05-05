@@ -14,12 +14,12 @@ import connect from './src/utils/mongo.connection2';
 
 const connectToDB = async()=>{
     await connect('mongodb://localhost:27017/admin');
-    // await mariaDB.getConnection().then((result:Object) => {
-    //     console.log('MariaDB success !')
-    // }).catch((err:Object) => {
-    //     console.log('MariaDB fail !')
-    // });
-    await mariaDB.getConnection()
+    await mariaDB.getConnection().then((result:Object) => {
+        console.log('MariaDB success !')
+    }).catch((err:Object) => {
+        console.log('MariaDB fail !')
+    });
+    //await mariaDB.getConnection()
     const router = require('./src/routers/index');
     app.use('/api',router);
     await app.listen(process.env.PORT,()=>{
