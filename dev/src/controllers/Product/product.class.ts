@@ -1,7 +1,7 @@
 import { Product_Interface } from "./product.interface";
 const db = require('../../utils/maria.connection');
 const escapeParams = require('../../utils/escape');
-class Product implements Product_Interface{
+class Product {
     tableName = 'Products';
     find =  async() =>{
         let sql = `SELECT * FROM ${this.tableName}`;
