@@ -1,6 +1,6 @@
-import { Response } from 'express';
 
-const error_handler = (err: any, res: Response) => {
+const error_handler = (err, res) => {
+  console.log(err)
   res.send({
     status: "Error",
     code: err.code,

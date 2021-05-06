@@ -1,14 +1,14 @@
-import { Request, Response } from 'express';
+import { Request, Response,NextFunction } from 'express';
 const Category = require('../../models/category.model')
 
 class Category_Controller {
-  getAllCategory = async (req: Request, res: Response) => {
-    await Category.find((err: Object, result: Object) => {
-      if (err) res.send(err);
-      res.send(result);
-    })
+  getAllCategory = async (req: Request, res: Response,next:NextFunction) => {
+      await Category.find((err: Object, result: Object) => {
+        if (err) next(err);
+        res.send(result);
+      })
   }
-  insertCategory = async (req: Request, res: Response) => {
+  insertCategory = async (req: Request, res: Response,next:NextFunction) => {
     //let { category_id, category_name } = req.body;
     let newCategory = { ...req.body };
     console.log(newCategory)
@@ -16,7 +16,7 @@ class Category_Controller {
       .then((result: any) => {
       res.json(result)
     }).catch((err:any) => {
-      res.json(err)
+      next(err)
     });;
   }
 }
